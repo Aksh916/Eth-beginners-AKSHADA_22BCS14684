@@ -1,37 +1,73 @@
- ETH-PROOF-Beginner-Assignment
-This is my ETH-PROOF-Beginner-Assignment where I have created a token to Mint and Burn coins.
+# Create Token
 
-Description
-This program is a simple token contract written in Solidity, a programming language used for developing smart contracts on the Ethereum blockchain. The contract stores details about a custom token, including its name, abbreviation, and total supply. It also maintains a mapping of addresses to balances, allowing for the tracking of token ownership. The contract includes mint and burn functions to manage the supply of tokens, making it a straightforward introduction to token creation and management in Solidity.
-Getting Started
-Executing program
-To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
-Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., Assessment.sol). Copy and paste the following code into the file:
+## Simple overview of use/purpose.
+
+This project demonstrates how to create a simple token on the Ethereum blockchain using Solidity. It covers fundamental concepts such as storing token details, minting new tokens, and burning existing tokens.
+
+## Description
+
+You will develop a smart contract named MyToken using Solidity 0.8.18. This contract will include public variables for token details, a mapping for balances, a mint function to increase the supply, and a burn function to decrease it, ensuring sufficient balance before burning.
+
+## Getting Started
+### Installing
+1. Visit the [Remix IDE](https://remix.ethereum.org/).
+2. No installations are required as Remix is an online IDE
+### Executing program
+1. Open Remix IDE.
+2. Create a new file named MyToken.sol.
+3. Copy and paste the following code into the file:
+
+solidity
+// SPDX-License-Identifier: MIT
+pragma solidity > 0.8.18;
+
+
 
 contract MyToken {
-// public variables here
-string public tokenName= "Alex";
-string public tokenAbbrv= "ALX";
-uint public totalSupply= 0;
 
-// mapping variable here
-mapping(address => uint) public balances;
-
-// mint function
-function mint(address _address, uint _value) public {
-    totalSupply+= _value;
-    balances[_address]+= _value;
+    // public variables here
+     string public tokenName = "Alex";
+     string public tokenABBRV = "ALX";
+     uint public totalsupply = 0;
+    // mapping variable here
+     mapping (address=>uint) public balances;
+    // mint function
+     function mint(address _address,uint _value)public{
+         totalsupply+=_value;
+         balances[_address]+=_value;
+     }
+    // burn function
+ function burn(address _address,uint _value)public{
+         if(balances[_address]>=_value){
+         totalsupply-=_value;
+         balances[_address]-=_value;
+         }
+     }
 }
-// burn function
-function burn(address _address, uint _value) public {
-    if(balances[_address] >=_value){
-        totalSupply-= _value;
-        balances[_address]-= _value;
-    }
-}
-}
-/*To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.4" (or another compatible version), and then click on the "Compile Assessment.sol" button.
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "Assessment" contract from the dropdown menu, and then click on the "Deploy" button.
+4. Compile the contract by clicking on the "Solidity Compiler" tab and then "Compile MyToken.sol".
+5. Deploy the contract by navigating to the "Deploy & Run Transactions" tab, selecting your contract, and clicking "Deploy".
+6. Interact with your deployed contract using the provided interface to call functions like tokenName, tokenAbbr, totalSupply, mint, and burn.
 
-To mint new tokens, use the mint function by providing an address and the amount of tokens to mint. To burn tokens, use the burn function by providing an address and the amount of tokens to burn. The function checks if the balance is sufficient before burning.*/
+## Help
+For common problems or issues:
+
+1. Ensure you have a stable internet connection while using Remix IDE.
+2. Make sure the Solidity version in Remix is set to 0.8.18.
+3. If you encounter any errors during compilation or deployment, double-check the syntax and version compatibility.
+
+For further assistance, you can refer to the Remix documentation or run the help command within Remix IDE if available.
+
+
+## Authors
+
+- Akshada Deshpande
+
+ - Linkedin:[Akshada Deshpande](https://www.linkedin.com/feed/)
+
+ - Github:[Akshada Deshoande](https://github.com/Aksh916/Eth-beginners-AKSHADA_22BCS14684/edit/main/README.md)
+
+
+## License
+
+This project is licensed under the [MIT] License - see the LICENSE.md file for details
